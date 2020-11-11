@@ -53,6 +53,7 @@ void secretaria()
          case 4:
             break;
          case 5:
+            status2 = false;
             break;
          case 6:
             break;
