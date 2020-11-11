@@ -45,6 +45,7 @@ void secretaria()
         switch (opcion2)
         {
         case 1:
+            cout << "hola" << endl;
             break;
          case 2:
             break;
