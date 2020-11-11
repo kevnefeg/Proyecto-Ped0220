@@ -41,6 +41,8 @@ void secretaria()
 		cout<<"4.- Dar de alta paciente";
 		cout<<"5.- Salir \n";
 		cin>>opcion2;
+        		system("cls");
+
 
         switch (opcion2)
         {
