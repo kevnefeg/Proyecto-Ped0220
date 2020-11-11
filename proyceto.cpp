@@ -15,6 +15,8 @@ struct paciente
     int habitacion;
 };
 
+paciente Paciente;
+
 struct sala_de_emergencia
 {
     paciente pac;
@@ -67,7 +69,8 @@ void secretaria()
 };
 
 void ingresarPaciente(){
-    
+    cout << "Nombre del paiente\n";
+    getline(cin,Paciente.name);
 }
 
 int main()
