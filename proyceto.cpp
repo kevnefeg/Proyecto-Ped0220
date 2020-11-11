@@ -48,6 +48,7 @@ void secretaria()
             cout << "hola" << endl;
             break;
          case 2:
+            cout << "que tal" << endl;
             break;
          case 3:
             break;
