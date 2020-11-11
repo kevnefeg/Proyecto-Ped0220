@@ -19,15 +19,16 @@ struct sala_de_emergencia
 {
     paciente pac;
 };
-void admin();
 
+void admin();
 void secretaria();
 
 void admin()
 {
-    		cout<<"2.- Mostrar pacientes";
+    cout<<"2.- Mostrar pacientes";
 
 };
+
 void secretaria()
 {
     int opcion2;
@@ -41,8 +42,6 @@ void secretaria()
 		cout<<"4.- Dar de alta paciente";
 		cout<<"5.- Salir \n";
 		cin>>opcion2;
-        		system("cls");
-
 
         switch (opcion2)
         {
@@ -66,6 +65,10 @@ void secretaria()
     
 
 };
+
+void ingresarPaciente(){
+    
+}
 
 int main()
 {
