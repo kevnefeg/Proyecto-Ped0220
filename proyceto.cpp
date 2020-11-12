@@ -158,34 +158,31 @@ void searching()
 {
     bool search = false;
     string name;
-        cin.ignore();
 
-    cout<<"escriba el nombre del paciente \n";
-    cin>>name;
-    cout<<"informacion del paciente solicitado \n";
+    cout << "Ingrese el nombre del paciente que desea buscar \n";
+    cout << "Nombre: ";
+    cin >> name;
 
-        if (PatientList.empty())
+    if (PatientList.empty())
+    {
+        cout << "No hay pacientes \n";
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < PatientList.size(); i++)
         {
-            cout<<"No hay pacientes \n";
-        }
-
-        else
-        {
-            for (int i = 0; i < PatientList.size(); i++)
+            if (PatientList.at(i).name == name)
             {
-                if (PatientList.at(1).name == name)
-                {
-                    search = true;
-                    cout<<"el paciente "<<PatientList.at(1).name<<"se ecneuntra en el hospital \n";
-                }
-                
+                search = true;
+                cout << "El paciente " << PatientList.at(i).name << " se ncuentra en el hospital \n";
             }
-            
         }
-        
-        
-    
-
+        if (search == false)
+        {
+            cout << "No hay ningun paciente con ese nombre \n";
+        }
+    }
 }
 
 void secretaria()
