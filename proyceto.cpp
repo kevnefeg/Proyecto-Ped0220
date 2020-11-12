@@ -93,7 +93,7 @@ void ingresarPaciente(){
         EmergencyRoomList.push_back(patient);
         break;
     
-    default:
+    default: 
         cout << "Opcion incorrecta \n";
         break;
     }
@@ -157,26 +157,24 @@ void admin()
 void searching()
 {
     string search;
+        cin.ignore();
 
     cout<<"escriba el nombre del paciente \n";
     getline(cin,search);
     cout<<"informacion del paciente solicitado \n";
 
-    for (int i = 0; i < PatientList.size() ; i++)
-    {
         if (patient.name==search)
         {
             cout<<"..........................\n";
             cout<<"nombre: "<<patient.name;
-            cout<<"dui: "<<patient.dui;
+            cout<<"dui: "<<patient.dui<<endl;
         }
-        else if (PatientList!=NULL)
+        if (PatientList.empty())
         {
-            /* code */
+            cout<<"esta vacia";
         }
         
         
-    }
     
 
 }
@@ -203,7 +201,7 @@ void secretaria()
         {
         case 1: ingresarPaciente();
             break;
-        case 2:
+        case 2: searching();
             break;
         case 3:
             break;
