@@ -156,6 +156,7 @@ void admin()
 
 void searching()
 {
+    bool search = false;
     string search;
         cin.ignore();
 
@@ -168,7 +169,9 @@ void searching()
             cout<<"..........................\n";
             cout<<"nombre: "<<patient.name;
             cout<<"dui: "<<patient.dui<<endl;
+            PatientList.size()!=NULL;
         }
+
         if (PatientList.empty())
         {
             cout<<"esta vacia";
