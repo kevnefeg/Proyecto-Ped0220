@@ -15,12 +15,12 @@ struct paciente
     int habitacion;
 };
 
-paciente Paciente;
-
 struct sala_de_emergencia
 {
     paciente pac;
 };
+
+paciente Paciente;
 
 void admin();
 void secretaria();
@@ -56,24 +56,28 @@ void secretaria()
 		cout<<"1.- Ingresar pacientes \n";
 		cout<<"2.- Buscar paciente por su nombre \n";
 		cout<<"3.- Buscar pacientes de doctor especifico \n";
-		cout<<"4.- Dar de alta paciente \n";
-		cout<<"5.- Salir \n";
+        cout<<"4.- Mostrar pacientes en sala de emergencia \n";
+        cout<<"5.- Mostrar pacientes en cuidados intensivos \n";
+		cout<<"6.- Dar de alta paciente \n";
+		cout<<"7.- Salir \n";
 		cin>>opcion2;
 
         switch (opcion2)
         {
         case 1: ingresarPaciente();
             break;
-         case 2:
+        case 2:
             break;
-         case 3:
+        case 3:
             break;
-         case 4:
+        case 4:
             break;
-         case 5:
+        case 5:
             status2 = false;
             break;
-         case 6:
+        case 6:
+            break;
+        case 7:
             break;
         default:
             break;
@@ -82,7 +86,6 @@ void secretaria()
     
 
 };
-
 
 int main()
 {
