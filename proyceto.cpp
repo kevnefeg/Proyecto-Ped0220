@@ -24,8 +24,42 @@ vector<Patient> PatientList;
 vector<Patient> EmergencyRoomList;
 vector<Patient> ICUList;
 
+void ingresarPaciente();
 void admin();
 void secretaria();
+
+int main()
+{
+    //hospital de centro america 
+    int option;
+    bool status=true;
+
+    do
+    {
+        cout<<"Bienvenido al hospital de centro america \n";
+        cout<<"USUARIOS\n";
+        cout<<"1. ADMIN\n";
+        cout<<"2. Secretaria \n";
+        cout<<"3. Cerrar \n";
+        cout << "Opcion: ";
+        cin>>option;
+        system("cls");
+
+        switch (option)
+        {
+        case 1:admin();
+            break;
+        case 2: secretaria();
+            break;
+        case 3: status=false;
+            break;
+        default:cout<<"numero incorrecto";
+                    break;
+        }
+    } while (status);
+
+    return 0;
+}
 
 void ingresarPaciente(){
     cin.ignore();
@@ -162,36 +196,3 @@ void secretaria()
     
 
 };
-
-int main()
-{
-    //hospital de centro america 
-    int option;
-    bool status=true;
-
-    do
-    {
-        cout<<"Bienvenido al hospital de centro america \n";
-        cout<<"USUARIOS\n";
-        cout<<"1. ADMIN\n";
-        cout<<"2. Secretaria \n";
-        cout<<"3. Cerrar \n";
-        cout << "Opcion: ";
-        cin>>option;
-        system("cls");
-
-        switch (option)
-        {
-        case 1:admin();
-            break;
-        case 2: secretaria();
-            break;
-        case 3: status=false;
-            break;
-        default:cout<<"numero incorrecto";
-                    break;
-        }
-    } while (status);
-
-    return 0;
-}
