@@ -26,8 +26,8 @@ vector<Patient> ICUList;
 
 void ingresarPaciente();
 void admin();
+void searching();
 void secretaria();
-
 int main()
 {
     //hospital de centro america 
@@ -154,6 +154,33 @@ void admin()
 
 };
 
+void searching()
+{
+    string search;
+
+    cout<<"escriba el nombre del paciente \n";
+    getline(cin,search);
+    cout<<"informacion del paciente solicitado \n";
+
+    for (int i = 0; i < PatientList.size() ; i++)
+    {
+        if (patient.name==search)
+        {
+            cout<<"..........................\n";
+            cout<<"nombre: "<<patient.name;
+            cout<<"dui: "<<patient.dui;
+        }
+        else if (PatientList!=NULL)
+        {
+            /* code */
+        }
+        
+        
+    }
+    
+
+}
+
 void secretaria()
 {
     int opcion2;
@@ -183,11 +210,11 @@ void secretaria()
         case 4:
             break;
         case 5:
-            status2 = false;
+          
             break;
         case 6:
             break;
-        case 7:
+        case 7: status2 = false;
             break;
         default:
             break;
