@@ -157,24 +157,30 @@ void admin()
 void searching()
 {
     bool search = false;
-    string search;
+    string name;
         cin.ignore();
 
     cout<<"escriba el nombre del paciente \n";
-    getline(cin,search);
+    cin>>name;
     cout<<"informacion del paciente solicitado \n";
-
-        if (patient.name==search)
-        {
-            cout<<"..........................\n";
-            cout<<"nombre: "<<patient.name;
-            cout<<"dui: "<<patient.dui<<endl;
-            PatientList.size()!=NULL;
-        }
 
         if (PatientList.empty())
         {
-            cout<<"esta vacia";
+            cout<<"No hay pacientes \n";
+        }
+
+        else
+        {
+            for (int i = 0; i < PatientList.size(); i++)
+            {
+                if (PatientList.at(1).name == name)
+                {
+                    search = true;
+                    cout<<"el paciente "<<PatientList.at(1).name<<"se ecneuntra en el hospital \n";
+                }
+                
+            }
+            
         }
         
         
