@@ -2,8 +2,12 @@
 #include <vector>
 #include <string>
 #include <queue>
+#include <conio.h>
 
 using namespace std;
+
+//Se declara la contraseña para la funcion del admin como constante
+#define Pass "hospital"
 
 struct Patient
 {
@@ -68,7 +72,56 @@ void ingresarPaciente(){
 
 void admin()
 {
-    cout<<"2.- Mostrar pacientes";
+    string password;
+    bool ingres = true;
+
+    while (ingres)
+    {
+        cin.ignore();
+        cout << "Ingrese la contrasenia: ";
+        
+        char caracter;
+        caracter = getch();
+
+        password = "";
+
+        //El caracter tiene que ser diferente que Enter
+        while (caracter != 13)
+        {
+            if (caracter != 8) //El caracter tiene que ser diferente que backspace
+            {
+                password.push_back(caracter);
+                cout << "*"; 
+            }
+            else
+            {
+                if (password.size() > 0)
+                {
+                    cout << "\b \b"; //Poder borrar los caracteres ingresados
+                    password.pop_back();
+                }
+                
+            }
+            
+            caracter = getch();
+        }
+        
+
+        if (password == Pass)
+        {
+            ingres = false;
+        }
+        else
+        {
+            cout << "\n";
+            cout << "Contrasenia incorrecta \n";
+            cout << "Presione enter para volver a intentarlo... \n"; 
+        }
+    }
+
+    system("cls");
+    cout << "\tAccedio correctamente al sistema \n";
+    cout << "\tQue desea hacer? \n";
 
 };
 
