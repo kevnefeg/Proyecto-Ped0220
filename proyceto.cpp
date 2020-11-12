@@ -25,6 +25,21 @@ struct sala_de_emergencia
 void admin();
 void secretaria();
 
+void ingresarPaciente(){
+    cout << "Ingrese el nombre del paciente \n";
+    getline(cin,Paciente.name);
+    cout << "Ingrese el apellido del paciente \n";
+    getline(cin, Paciente.lastname);
+    cout << "Ingrese el DUI del paciente \n";
+    cin >> Paciente.dui;
+    cout << "Ingrese el nombre del familiar encargado \n";
+    getline(cin, Paciente.family);
+    cout << "Ingrese el nombre del doctor encargado \n";
+    getline(cin, Paciente.doctor);
+    cout << "Ingrese la habitacion del paciente \n";
+    cin >> Paciente.habitacion;
+}
+
 void admin()
 {
     cout<<"2.- Mostrar pacientes";
@@ -39,15 +54,15 @@ void secretaria()
     {
         cout<<"Bienvenido, ingrese la opcion de su preferencia: \n";
 		cout<<"1.- Ingresar pacientes \n";
-		cout<<"2.- Buscar paciente por su nombre";
-		cout<<"3.- Buscar pacientes de doctor especifico";
-		cout<<"4.- Dar de alta paciente";
+		cout<<"2.- Buscar paciente por su nombre \n";
+		cout<<"3.- Buscar pacientes de doctor especifico \n";
+		cout<<"4.- Dar de alta paciente \n";
 		cout<<"5.- Salir \n";
 		cin>>opcion2;
 
         switch (opcion2)
         {
-        case 1:
+        case 1: ingresarPaciente();
             break;
          case 2:
             break;
@@ -68,10 +83,6 @@ void secretaria()
 
 };
 
-void ingresarPaciente(){
-    cout << "Nombre del paiente\n";
-    getline(cin,Paciente.name);
-}
 
 int main()
 {
