@@ -5,7 +5,7 @@
 
 using namespace std;
 
-struct paciente
+struct Patient
 {
     string name, lastname;
     int dui;
@@ -17,27 +17,53 @@ struct paciente
 
 struct sala_de_emergencia
 {
-    paciente pac;
+    Patient pac;
 };
 
-paciente Paciente;
+Patient patient;
+vector<Patient> PatientList;
+vector<Patient> EmergencyRoomList;
+vector<Patient> ICUList;
 
 void admin();
 void secretaria();
 
 void ingresarPaciente(){
+    cin.ignore();
     cout << "Ingrese el nombre del paciente \n";
-    getline(cin,Paciente.name);
+    getline(cin,patient.name);
     cout << "Ingrese el apellido del paciente \n";
-    getline(cin, Paciente.lastname);
+    getline(cin, patient.lastname);
     cout << "Ingrese el DUI del paciente \n";
-    cin >> Paciente.dui;
+    cin >> patient.dui;
     cout << "Ingrese el nombre del familiar encargado \n";
-    getline(cin, Paciente.family);
+    cin.ignore();
+    getline(cin, patient.family);
     cout << "Ingrese el nombre del doctor encargado \n";
-    getline(cin, Paciente.doctor);
+    getline(cin, patient.doctor);
     cout << "Ingrese la habitacion del paciente \n";
-    cin >> Paciente.habitacion;
+    cin >> patient.habitacion;
+
+    PatientList.push_back(patient);
+
+    int opcion3;
+
+    cout << "A que area se trasladara el paciente \n";
+    cout << "1. Sala de Emergencias \n";
+    cout << "2. Cuidados Intensivos \n";
+    cout << "Opcion :";
+    cin >> opcion3;
+    
+    switch (opcion3)
+    {
+    case 1:
+        EmergencyRoomList.push_back(patient);
+        break;
+    
+    default:
+        cout << "Opcion incorrecta \n";
+        break;
+    }
 }
 
 void admin()
@@ -60,7 +86,9 @@ void secretaria()
         cout<<"5.- Mostrar pacientes en cuidados intensivos \n";
 		cout<<"6.- Dar de alta paciente \n";
 		cout<<"7.- Salir \n";
+        cout << "Opcion: ";
 		cin>>opcion2;
+        system("cls");
 
         switch (opcion2)
         {
@@ -99,7 +127,8 @@ int main()
         cout<<"USUARIOS\n";
         cout<<"1. ADMIN\n";
         cout<<"2. Secretaria \n";
-        cout<<"3. Cerrar";
+        cout<<"3. Cerrar \n";
+        cout << "Opcion: ";
         cin>>option;
         system("cls");
 
