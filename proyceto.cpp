@@ -27,6 +27,7 @@ vector<Patient> ICUList;
 void ingresarPaciente();
 void admin();
 void searching();
+void searchDR();
 void secretaria();
 int main()
 {
@@ -73,6 +74,7 @@ void ingresarPaciente(){
     cin.ignore();
     getline(cin, patient.family);
     cout << "Ingrese el nombre del doctor encargado \n";
+    cout<<"Dr. Juarez \t"<<"Dr. Cerna \t";
     getline(cin, patient.doctor);
     cout << "Ingrese la habitacion del paciente \n";
     cin >> patient.habitacion;
@@ -86,13 +88,16 @@ void ingresarPaciente(){
     cout << "2. Cuidados Intensivos \n";
     cout << "Opcion :";
     cin >> opcion3;
+        system("cls");
+
     
     switch (opcion3)
     {
     case 1:
         EmergencyRoomList.push_back(patient);
         break;
-    
+    case 2:
+        ICUList.push_back(patient);
     default: 
         cout << "Opcion incorrecta \n";
         break;
@@ -176,6 +181,7 @@ void searching()
             {
                 search = true;
                 cout << "El paciente " << PatientList.at(i).name << " se ncuentra en el hospital \n";
+                cout << "Dui";
             }
         }
         if (search == false)
@@ -183,6 +189,27 @@ void searching()
             cout << "No hay ningun paciente con ese nombre \n";
         }
     }
+}
+
+void searchDR()
+{
+    int option4;
+    cout<<"Doctores en turno \n";
+    cout<<"1. DR .JUAREZ \n"<<" 2. DR. CERNA \n";
+    cin>>option4;
+
+    switch (option4)
+    {
+    case 1: 
+        break;
+
+    case 2:
+        break;
+    
+    default:
+        break;
+    }
+
 }
 
 void secretaria()
