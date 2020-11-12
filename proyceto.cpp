@@ -19,11 +19,6 @@ struct Patient
     int habitacion;
 };
 
-struct sala_de_emergencia
-{
-    Patient pac;
-};
-
 Patient patient;
 vector<Patient> PatientList;
 vector<Patient> EmergencyRoomList;
