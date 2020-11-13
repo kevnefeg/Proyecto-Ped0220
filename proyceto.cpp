@@ -203,14 +203,45 @@ void searching()
 
 void searchDR()
 {
+    bool search2 = false;
     int option4;
     cout<<"Doctores en turno \n";
-    cout<<"1. DR .JUAREZ \n"<<" 2. DR. CERNA \n";
+    cout<<"1. Dr.Juarez \n"<<"2. Dr. Cerna \n";
+    cout << "Opcion: ";
     cin>>option4;
 
     switch (option4)
     {
     case 1: 
+        if (PatientList.empty())
+    {
+        cout << "No hay pacientes en el hospital \n";
+        cout << "Presione enter para continuar...";
+        getch();
+        system("cls");
+        return;
+    }
+    else
+    {
+        for (int i = 0; i < PatientList.size(); i++)
+        {
+            if (PatientList.at(i).doctor == "Juarez")
+            {
+                search2 = true;
+                cout << "El paciente " << PatientList.at(i).name << " " << PatientList.at(i).lastname << " se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+            }
+        }
+        cout << "Presiones enter para continuar...";
+        getch();
+        system("cls");
+        if (search2 == false)
+        {
+            cout << "El docotr no tiene ningun paciente en estos momentos \n";
+            cout << "Presione enter para continuar...";
+            getch();
+            system("cls");
+        }
+    }
         break;
 
     case 2:
@@ -246,7 +277,7 @@ void secretaria()
             break;
         case 2: searching();
             break;
-        case 3:
+        case 3:searchDR();
             break;
         case 4:
             break;
