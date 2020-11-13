@@ -14,9 +14,9 @@ struct Patient
     string name, lastname;
     int dui;
     string family;
-    string sintomas;
+    string symptoms;
     string doctor;
-    int habitacion;
+    int room;
 };
 
 Patient patient;
@@ -28,6 +28,7 @@ void ingresarPaciente();
 void admin();
 void searching();
 void secretaria();
+
 int main()
 {
     //hospital de centro america 
@@ -36,9 +37,9 @@ int main()
 
     do
     {
-        cout<<"Bienvenido al hospital de centro america \n";
-        cout<<"USUARIOS\n";
-        cout<<"1. ADMIN\n";
+        cout<<"***BIENVENIDOS AL HOSPITAL DE CENTROAMERICA*** \n";
+        cout<<"USUARIOS DISPONIBLES \n";
+        cout<<"1. Administrador(a) \n";
         cout<<"2. Secretaria \n";
         cout<<"3. Cerrar \n";
         cout << "Opcion: ";
@@ -53,8 +54,8 @@ int main()
             break;
         case 3: status=false;
             break;
-        default:cout<<"numero incorrecto";
-                    break;
+        default:cout<<"Opcion incorrecta";
+            break;
         }
     } while (status);
 
@@ -75,19 +76,19 @@ void ingresarPaciente(){
     cout << "Ingrese el nombre del doctor encargado \n";
     getline(cin, patient.doctor);
     cout << "Ingrese la habitacion del paciente \n";
-    cin >> patient.habitacion;
+    cin >> patient.room;
 
     PatientList.push_back(patient);
 
-    int opcion3;
+    int option3;
 
-    cout << "A que area se trasladara el paciente \n";
+    cout << "Ingrese el area donde sera trasladado el paciente \n";
     cout << "1. Sala de Emergencias \n";
     cout << "2. Cuidados Intensivos \n";
-    cout << "Opcion :";
-    cin >> opcion3;
+    cout << "Opcion:";
+    cin >> option3;
     
-    switch (opcion3)
+    switch (option3)
     {
     case 1:
         EmergencyRoomList.push_back(patient);
@@ -102,9 +103,9 @@ void ingresarPaciente(){
 void admin()
 {
     string password;
-    bool ingres = true;
+    bool ingress = true;
 
-    while (ingres)
+    while (ingress)
     {
         cin.ignore();
         cout << "Ingrese la contrasenia: ";
@@ -138,19 +139,19 @@ void admin()
 
         if (password == Pass)
         {
-            ingres = false;
+            ingress = false;
         }
         else
         {
             cout << "\n";
             cout << "Contrasenia incorrecta \n";
-            cout << "Presione enter para volver a intentarlo... \n"; 
+            cout << "Presione enter para volver a intentarlo \n"; 
         }
     }
 
     system("cls");
     cout << "\tAccedio correctamente al sistema \n";
-    cout << "\tQue desea hacer? \n";
+    cout << "\t¿Que desea hacer? \n";
 
 };
 
@@ -175,7 +176,7 @@ void searching()
             if (PatientList.at(i).name == name)
             {
                 search = true;
-                cout << "El paciente " << PatientList.at(i).name << " se ncuentra en el hospital \n";
+                cout << "El paciente " << PatientList.at(i).name << " se encuentra en el hospital \n";
             }
         }
         if (search == false)
@@ -187,7 +188,7 @@ void searching()
 
 void secretaria()
 {
-    int opcion2;
+    int option2;
     bool status2=true;
     do
     {
@@ -200,10 +201,10 @@ void secretaria()
 		cout<<"6.- Dar de alta paciente \n";
 		cout<<"7.- Salir \n";
         cout << "Opcion: ";
-		cin>>opcion2;
+		cin>>option2;
         system("cls");
 
-        switch (opcion2)
+        switch (option2)
         {
         case 1: ingresarPaciente();
             break;
