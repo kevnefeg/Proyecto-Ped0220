@@ -212,43 +212,71 @@ void searchDR()
 
     switch (option4)
     {
-    case 1: 
-        if (PatientList.empty())
-    {
-        cout << "No hay pacientes en el hospital \n";
-        cout << "Presione enter para continuar...";
-        getch();
-        system("cls");
-        return;
-    }
-    else
-    {
-        for (int i = 0; i < PatientList.size(); i++)
-        {
-            if (PatientList.at(i).doctor == "Juarez")
+        case 1: 
+            if (PatientList.empty())
             {
-                search2 = true;
-                cout << "El paciente " << PatientList.at(i).name << " " << PatientList.at(i).lastname << " se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                cout << "No hay pacientes en el hospital \n";
+                cout << "Presione enter para continuar...";
+                getch();
+                system("cls");
+                return;
             }
-        }
-        cout << "Presiones enter para continuar...";
-        getch();
-        system("cls");
-        if (search2 == false)
-        {
-            cout << "El docotr no tiene ningun paciente en estos momentos \n";
-            cout << "Presione enter para continuar...";
-            getch();
-            system("cls");
-        }
-    }
-        break;
-
-    case 2:
-        break;
-    
-    default:
-        break;
+            else
+            {
+                for (int i = 0; i < PatientList.size(); i++)
+                {
+                    if (PatientList.at(i).doctor == "Juarez")
+                    {
+                        search2 = true;
+                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                    }
+                }
+                cout << "Presiones enter para continuar...";
+                getch();
+                system("cls");
+                if (search2 == false)
+                {
+                    cout << "El doctor no tiene ningun paciente en estos momentos \n";
+                    cout << "Presione enter para continuar...";
+                    getch();
+                    system("cls");
+                }
+            }
+                break;
+        case 2:
+            if (PatientList.empty())
+            {
+                cout << "No hay pacientes en el hospital \n";
+                cout << "Presione enter para continuar...";
+                getch();
+                system("cls");
+                return;
+            }
+            else
+            {
+                for (int i = 0; i < PatientList.size(); i++)
+                {
+                    if (PatientList.at(i).doctor == "Cerna")
+                    {
+                        search2 = true;
+                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                    }
+                }
+                cout << "Presiones enter para continuar...";
+                getch();
+                system("cls");
+                
+                if (search2 == false)
+                {
+                    cout << "El doctor no tiene ningun paciente en estos momentos \n";
+                    cout << "Presione enter para continuar...";
+                    getch();
+                    system("cls");
+                }
+            }
+            break;
+        default: cout << "Opcion incorrecta";
+            break;
     }
 
 }
