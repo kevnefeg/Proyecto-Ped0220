@@ -76,6 +76,7 @@ void ingresarPaciente(){
     getline(cin, patient.family);
     cout << "Ingrese el nombre del doctor encargado \n";
     cout<<"Dr. Juarez \t"<<"Dr. Cerna \t";
+    cout << "\nDoctor: ";
     getline(cin, patient.doctor);
     cout << "Ingrese la habitacion del paciente \n";
     cin >> patient.room;
@@ -156,7 +157,7 @@ void admin()
 
     system("cls");
     cout << "\tAccedio correctamente al sistema \n";
-    cout << "\t¿Que desea hacer? \n";
+    cout << "\tQue desea hacer? \n";
 
 };
 
@@ -172,6 +173,9 @@ void searching()
     if (PatientList.empty())
     {
         cout << "No hay pacientes \n";
+        cout << "Presione enter para continuar...";
+        getch();
+        system("cls");
         return;
     }
     else
@@ -181,13 +185,18 @@ void searching()
             if (PatientList.at(i).name == name)
             {
                 search = true;
-                cout << "El paciente " << PatientList.at(i).name << " se encuentra en el hospital \n";
-                cout << "Dui";
+                cout << "El paciente " << PatientList.at(i).name << " " << PatientList.at(i).lastname << " se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                cout << "Presione enter para continuar...";
+                getch();
+                system("cls");
             }
         }
         if (search == false)
         {
             cout << "No hay ningun paciente con ese nombre \n";
+            cout << "Presione enter para continuar...";
+            getch();
+            system("cls");
         }
     }
 }
