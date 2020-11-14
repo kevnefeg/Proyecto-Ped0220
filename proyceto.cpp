@@ -28,6 +28,9 @@ void ingresarPaciente();
 void admin();
 void searching();
 void searchDR();
+void emergency();
+void ICU();
+void eliminate();
 void secretaria();
 
 int main()
@@ -38,7 +41,7 @@ int main()
 
     do
     {
-        cout<<"***BIENVENIDOS AL HOSPITAL DE CENTROAMERICA*** \n";
+        cout<<"-*-*-*-* \t BIENVENIDOS AL HOSPITAL DE CENTROAMERICA \t -*-*-*-*\n";
         cout<<"USUARIOS DISPONIBLES \n";
         cout<<"1. Administrador(a) \n";
         cout<<"2. Secretaria \n";
@@ -65,20 +68,20 @@ int main()
 
 void ingresarPaciente(){
     cin.ignore();
-    cout << "Ingrese el nombre del paciente \n";
+    cout << "Ingrese el nombre del paciente \n --";
     getline(cin,patient.name);
-    cout << "Ingrese el apellido del paciente \n";
+    cout << "Ingrese el apellido del paciente \n --";
     getline(cin, patient.lastname);
-    cout << "Ingrese el DUI del paciente \n";
+    cout << "Ingrese el DUI del paciente \n --";
     cin >> patient.dui;
-    cout << "Ingrese el nombre del familiar encargado \n";
+    cout << "Ingrese el nombre del familiar encargado \n --";
     cin.ignore();
     getline(cin, patient.family);
-    cout << "Ingrese el nombre del doctor encargado \n";
-    cout<<"Dr. Juarez \t"<<"Dr. Cerna \t";
+    cout << "Ingrese el nombre del doctor encargado \n ";
+    cout<<"\t Dr. Juarez \t"<<"\t Dr. Cerna \t";
     cout << "\nDoctor: ";
     getline(cin, patient.doctor);
-    cout << "Ingrese la habitacion del paciente \n";
+    cout << "Ingrese la habitacion del paciente \n --";
     cin >> patient.room;
 
     PatientList.push_back(patient);
@@ -281,20 +284,35 @@ void searchDR()
 
 }
 
+void emergency()
+{
+    cout<<"Pacientes en la sala de emergencia \t";
+}
+
+void ICU()
+{
+    cout<<"Pacientes en cuidados intensivos \t";
+}
+
+void eliminate()
+{
+    cout<<"Eliminando paciente ... \t";
+}
+
 void secretaria()
 {
     int option2;
     bool status2=true;
     do
     {
-        cout<<"Bienvenido, ingrese la opcion de su preferencia: \n";
-		cout<<"1.- Ingresar pacientes \n";
-		cout<<"2.- Buscar paciente por su nombre \n";
-		cout<<"3.- Buscar pacientes de doctor especifico \n";
-        cout<<"4.- Mostrar pacientes en sala de emergencia \n";
-        cout<<"5.- Mostrar pacientes en cuidados intensivos \n";
-		cout<<"6.- Dar de alta paciente \n";
-		cout<<"7.- Salir \n";
+        cout<<"*-*-*-*- \t Bienvenido, ingrese la opcion de su preferencia \t -*-*-*-*\n \n";
+		cout<<"\t \t \t 1. Ingresar paciente  \n";
+		cout<<"\t \t \t 2. Buscar paciente por su nombre \n";
+		cout<<"\t \t \t 3. Buscar pacientes de doctor especifico \n";
+        cout<<"\t \t \t 4. Mostrar pacientes en sala de emergencia \n";
+        cout<<"\t \t \t 5. Mostrar pacientes en cuidados intensivos \n";
+		cout<<"\t \t \t 6. Dar de alta paciente \n";
+		cout<<"\t \t \t 7. Salir \n";
         cout << "Opcion: ";
 		cin>>option2;
         system("cls");
