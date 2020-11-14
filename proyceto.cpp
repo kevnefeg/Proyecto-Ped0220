@@ -22,8 +22,11 @@ struct Patient
 Patient patient;
 vector<Patient> PatientList;
 vector<Patient> EmergencyRoomList;
+vector<Patient> ConsultPatient;
+vector<Patient> Surgeons;
 vector<Patient> ICUList;
 
+void PatientData();
 void ingresarPaciente();
 void admin();
 void searching();
@@ -66,7 +69,7 @@ int main()
     return 0;
 }
 
-void ingresarPaciente(){
+void PatientData(){
     cin.ignore();
     cout << "Ingrese el nombre del paciente \n --";
     getline(cin,patient.name);
@@ -86,11 +89,16 @@ void ingresarPaciente(){
 
     PatientList.push_back(patient);
 
+    system("cls");
+}
+
+void ingresarPaciente(){
     int option3;
 
     cout << "Ingrese el area donde sera trasladado el paciente \n";
-    cout << "1. Sala de Emergencias \n";
-    cout << "2. Cuidados Intensivos \n";
+    cout << "1. Consulta \n";
+    cout << "2. Sala de Emergencias \n";
+    cout << "3. Cirujias \n";
     cout << "Opcion :";
     cin >> option3;
         system("cls");
@@ -99,10 +107,17 @@ void ingresarPaciente(){
     switch (option3)
     {
     case 1:
-        EmergencyRoomList.push_back(patient);
+        PatientData();
+        ConsultPatient.push_back(patient);
         break;
     case 2:
-        ICUList.push_back(patient);
+        PatientData();
+        EmergencyRoomList.push_back(patient);
+        break;
+    case 3:
+        PatientData();
+        Surgeons.push_back(patient);
+        break;
     default: 
         cout << "Opcion incorrecta \n";
         break;
@@ -286,7 +301,15 @@ void searchDR()
 
 void emergency()
 {
-    cout<<"Pacientes en la sala de emergencia \t";
+    cout<<"\tPacientes en la sala de emergencia \n";
+
+     for (int i = 0; i < EmergencyRoomList.size(); i++)
+    {
+        cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion " << EmergencyRoomList[i].room;
+        cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor << "\n";
+    }
+    getch();
+    system("cls");
 }
 
 void ICU()
@@ -325,7 +348,7 @@ void secretaria()
             break;
         case 3:searchDR();
             break;
-        case 4:
+        case 4: emergency();
             break;
         case 5:
           
