@@ -23,18 +23,20 @@ Patient patient;
 vector<Patient> PatientList;
 vector<Patient> EmergencyRoomList;
 vector<Patient> ConsultPatient;
-vector<Patient> Surgeons;
+vector<Patient> Surgeries;
 vector<Patient> ICUList;
+vector<Patient> DischargedList;
 
+void password();
 void PatientData();
-void ingresarPaciente();
+void admitPatient();
 void admin();
 void searching();
 void searchDR();
 void emergency();
 void ICU();
-void eliminate();
-void secretaria();
+void removePatient();
+void secretary();
 
 int main()
 {
@@ -55,13 +57,13 @@ int main()
 
         switch (option)
         {
-        case 1:admin();
+        case 1: admin();
             break;
-        case 2: secretaria();
+        case 2: secretary();
             break;
         case 3: status=false;
             break;
-        default:cout<<"Opcion incorrecta";
+        default: cout<<"Opcion incorrecta";
             break;
         }
     } while (status);
@@ -69,62 +71,7 @@ int main()
     return 0;
 }
 
-void PatientData(){
-    cin.ignore();
-    cout << "Ingrese el nombre del paciente \n --";
-    getline(cin,patient.name);
-    cout << "Ingrese el apellido del paciente \n --";
-    getline(cin, patient.lastname);
-    cout << "Ingrese el DUI del paciente \n --";
-    cin >> patient.dui;
-    cout << "Ingrese el nombre del familiar encargado \n --";
-    cin.ignore();
-    getline(cin, patient.family);
-    cout << "Ingrese el nombre del doctor encargado \n ";
-    cout<<"\t Dr. Juarez \t"<<"\t Dr. Cerna \t";
-    cout << "\nDoctor: ";
-    getline(cin, patient.doctor);
-    cout << "Ingrese la habitacion del paciente \n --";
-    cin >> patient.room;
-
-    PatientList.push_back(patient);
-
-    system("cls");
-}
-
-void ingresarPaciente(){
-    int option3;
-
-    cout << "Ingrese el area donde sera trasladado el paciente \n";
-    cout << "1. Consulta \n";
-    cout << "2. Sala de Emergencias \n";
-    cout << "3. Cirujias \n";
-    cout << "Opcion :";
-    cin >> option3;
-        system("cls");
-
-    
-    switch (option3)
-    {
-    case 1:
-        PatientData();
-        ConsultPatient.push_back(patient);
-        break;
-    case 2:
-        PatientData();
-        EmergencyRoomList.push_back(patient);
-        break;
-    case 3:
-        PatientData();
-        Surgeons.push_back(patient);
-        break;
-    default: 
-        cout << "Opcion incorrecta \n";
-        break;
-    }
-}
-
-void admin()
+void password()
 {
     string password;
     bool ingress = true;
@@ -172,6 +119,66 @@ void admin()
             cout << "Presione enter para volver a intentarlo \n"; 
         }
     }
+}
+
+void PatientData(){
+    cin.ignore();
+    cout << "Ingrese el nombre del paciente \n --";
+    getline(cin,patient.name);
+    cout << "Ingrese el apellido del paciente \n --";
+    getline(cin, patient.lastname);
+    cout << "Ingrese el DUI del paciente \n --";
+    cin >> patient.dui;
+    cout << "Ingrese el nombre del familiar encargado \n --";
+    cin.ignore();
+    getline(cin, patient.family);
+    cout << "Ingrese el nombre del doctor encargado \n ";
+    cout<<"\t Dr. Juarez \t"<<"\t Dr. Cerna \t";
+    cout << "\nDoctor: ";
+    getline(cin, patient.doctor);
+    cout << "Ingrese la habitacion del paciente \n --";
+    cin >> patient.room;
+
+    PatientList.push_back(patient);
+
+    system("cls");
+}
+
+void admitPatient(){
+    int option3;
+
+    cout << "Ingrese el area donde sera trasladado el paciente \n";
+    cout << "1. Consulta \n";
+    cout << "2. Sala de Emergencias \n";
+    cout << "3. Cirujias \n";
+    cout << "Opcion :";
+    cin >> option3;
+        system("cls");
+
+    
+    switch (option3)
+    {
+    case 1:
+        PatientData();
+        ConsultPatient.push_back(patient);
+        break;
+    case 2:
+        PatientData();
+        EmergencyRoomList.push_back(patient);
+        break;
+    case 3:
+        PatientData();
+        Surgeries.push_back(patient);
+        break;
+    default: 
+        cout << "Opcion incorrecta \n";
+        break;
+    }
+}
+
+void admin()
+{
+    password();
 
     system("cls");
     cout << "\tAccedio correctamente al sistema \n";
@@ -317,12 +324,12 @@ void ICU()
     cout<<"Pacientes en cuidados intensivos \t";
 }
 
-void eliminate()
+void removePatient()
 {
     cout<<"Eliminando paciente ... \t";
 }
 
-void secretaria()
+void secretary()
 {
     int option2;
     bool status2=true;
@@ -342,11 +349,11 @@ void secretaria()
 
         switch (option2)
         {
-        case 1: ingresarPaciente();
+        case 1: admitPatient();
             break;
         case 2: searching();
             break;
-        case 3:searchDR();
+        case 3: searchDR();
             break;
         case 4: emergency();
             break;
