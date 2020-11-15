@@ -351,7 +351,6 @@ void secretaria()
         case 4: emergency();
             break;
         case 5:
-          
             break;
         case 6:
             break;
