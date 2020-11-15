@@ -7,24 +7,29 @@
 using namespace std;
 
 #define Pass "hospital"
-struct Patient
-{
+
+//estrcutura de paciente 
+     struct Patient
+    {
     string name, lastname;
     int dui;
     string family;
     string symptoms;
     string doctor;
     int room;
-};
+    };
 
 Patient patient;
-vector<Patient> PatientList;
-vector<Patient> EmergencyRoomList;
-vector<Patient> ConsultPatient;
-vector<Patient> Surgeries;
-vector<Patient> ICUList;
-vector<Patient> DischargedList;
+//listas globales
+         vector<Patient> PatientList;
+         vector<Patient> EmergencyRoomList;
+         vector<Patient> ConsultPatient;
+         vector<Patient> Surgeries;
+         vector<Patient> ICUList;
+         vector<Patient> DischargedList;
 
+
+//funcion de contrasenia para el usuario de administrador 
 void password()
 {
     string password;
@@ -40,7 +45,7 @@ void password()
 
         password = "";
 
-        //El caracter tiene que ser diferente que Enter
+//El caracter tiene que ser diferente que Enter
         while (caracter != 13)
         {
             if (caracter != 8) //El caracter tiene que ser diferente que backspace
@@ -75,6 +80,9 @@ void password()
     }
 }
 
+//funcion ingresando los datos del paciente 
+//nombre -- apellido -- dui -- familiar encargado -- doctor --  habitacon 
+//almacenandose en la lista PatientList
 void PatientData(){
     cin.ignore();
     cout << "Ingrese el nombre del paciente \n --";
@@ -98,6 +106,10 @@ void PatientData(){
     system("cls");
 }
 
+//funcion donde muestra las opciones del hospital para poder ingresar al paciente 
+//consulta -- sala de emergencias -- cirujias
+//segun la opcion ingresada se almacenara en la lista :
+//ConsultPatient, EmergencyRoomList, Surgeries 
 void admitPatient(){
     int option3;
 
@@ -130,6 +142,8 @@ void admitPatient(){
     }
 }
 
+//funcion seguida de la entrada de la contrasenia para el usuario administrador 
+//entrando en funciones especiales que solo el admin tiene acceso 
 void admin()
 {
     password();
@@ -140,6 +154,7 @@ void admin()
 
 };
 
+//funcion buscando el paciente por medio del nombre 
 void searching()
 {
     bool search = false;
@@ -180,6 +195,8 @@ void searching()
     }
 }
 
+//funcion buscando los pacientes que tiene cada doctor
+//se muestran las opciones de los doctores en turno 
 void searchDR()
 {
     bool search2 = false;
@@ -260,6 +277,7 @@ void searchDR()
 
 }
 
+//funcion mostrando los pacientes ubicados en la sala de emergencia 
 void emergency()
 {
     cout<<"\tPacientes en la sala de emergencia \n";
@@ -273,16 +291,20 @@ void emergency()
     system("cls");
 }
 
+//funcion mostrando los pacientes en cuidados intensivos 
 void ICU()
 {
     cout<<"Pacientes en cuidados intensivos \t";
 }
 
+//funcion para dar de alta (eliminar) un paciente 
 void removePatient()
 {
     cout<<"Eliminando paciente ... \t";
 }
 
+//menu que tiene acceso el personal de secretaria 
+//un menu amplio de opciones desde ingresar, buscar, mostrar y eliminar un paciente 
 void secretary()
 {
     int option2;

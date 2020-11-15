@@ -7,7 +7,7 @@
 
 using namespace std;
 
-
+//funciones 
 void password();
 void PatientData();
 void admitPatient();
@@ -19,14 +19,17 @@ void ICU();
 void removePatient();
 void secretary();
 
+
+//main del "hospital de centro america"
 int main()
 {
-    //hospital de centro america 
     int option;
     bool status=true;
 
     do
     {
+//menu de inicio (opciones de usuarios admin - secretaria)
+
         cout<<"-*-*-*-* \t BIENVENIDOS AL HOSPITAL DE CENTROAMERICA \t -*-*-*-*\n";
         cout<<"USUARIOS DISPONIBLES \n";
         cout<<"1. Administrador(a) \n";
