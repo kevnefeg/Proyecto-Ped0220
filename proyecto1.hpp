@@ -282,11 +282,40 @@ void emergency()
 {
     cout<<"\tPacientes en la sala de emergencia \n";
 
-     for (int i = 0; i < EmergencyRoomList.size(); i++)
+    if (EmergencyRoomList.empty())
     {
-        cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion " << EmergencyRoomList[i].room;
-        cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor << "\n";
+        cout << "No hay pacientes en sala de emergencia \n";
     }
+    else
+    {
+        for (int i = 0; i < EmergencyRoomList.size(); i++)
+        {
+            cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion " << EmergencyRoomList[i].room;
+            cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor << "\n";
+        }
+        
+    }
+    getch();
+    system("cls");
+}
+
+void surgery(){
+    cout<<"\tPacientes en cirujia \n";
+
+        if (Surgeries.empty())
+        {
+            cout << "No hay pacientes en cirujia en estos momentos \n";
+        }
+        else
+        {
+            for (int i = 0; i < Surgeries.size(); i++)
+            {
+                cout << "Paciente: " << Surgeries[i].name << " " << Surgeries[i].lastname << " se encuentra en la habitacion " << Surgeries[i].room;
+                cout << " , doctor encargado: Dr." << Surgeries[i].doctor << "\n";
+            }
+            
+        } 
+     
     getch();
     system("cls");
 }
@@ -294,13 +323,50 @@ void emergency()
 //funcion mostrando los pacientes en cuidados intensivos 
 void ICU()
 {
-    cout<<"Pacientes en cuidados intensivos \t";
+    cout<<"Pacientes en cuidados intensivos \t"; 
 }
 
 //funcion para dar de alta (eliminar) un paciente 
 void removePatient()
 {
-    cout<<"Eliminando paciente ... \t";
+    cin.ignore();
+    string DischargedName, DischargedLastname;
+    cout<<"\tA que paciente desea dar de alta \n";
+    cout << "Nombre: ";
+    getline(cin, DischargedName);
+    cout << "Apellido: ";
+    getline(cin, DischargedLastname);
+
+    bool encontrado = false;    
+
+    for (int i = 0; i < PatientList.size(); i++)
+    {
+        if (PatientList.at(i).name == DischargedName && PatientList.at(i).lastname == DischargedLastname)
+        {
+            encontrado = true;
+            cout << "Se ha eliminado al paciente correctamente \n";
+            PatientList.at(i).name.erase();
+            PatientList.at(i).lastname.erase();
+            PatientList.at(i).doctor.erase();
+        }   
+    }
+    for (int i = 0; i < EmergencyRoomList.size(); i++)
+    {
+        if (EmergencyRoomList.at(i).name == DischargedName && EmergencyRoomList.at(i).lastname == DischargedLastname)
+        {
+            encontrado = true;
+            EmergencyRoomList.at(i).name.erase();
+            EmergencyRoomList.at(i).lastname.erase();
+        }   
+    }
+
+    if (encontrado == false)
+    {
+        cout << "No hay ningun paciente con dichos datos \n";
+    }
+    
+    getch();
+    system("cls");
 }
 
 //menu que tiene acceso el personal de secretaria 
@@ -316,9 +382,10 @@ void secretary()
 		cout<<"\t \t \t 2. Buscar paciente por su nombre \n";
 		cout<<"\t \t \t 3. Buscar pacientes de doctor especifico \n";
         cout<<"\t \t \t 4. Mostrar pacientes en sala de emergencia \n";
-        cout<<"\t \t \t 5. Mostrar pacientes en cuidados intensivos \n";
-		cout<<"\t \t \t 6. Dar de alta paciente \n";
-		cout<<"\t \t \t 7. Salir \n";
+        cout<<"\t \t \t 5. Mostrar pacientes en cirujia \n";
+        cout<<"\t \t \t 6. Mostrar pacientes en cuidados intensivos \n";
+		cout<<"\t \t \t 7. Dar de alta paciente \n";
+		cout<<"\t \t \t 8. Salir \n";
         cout << "Opcion: ";
 		cin>>option2;
         system("cls");
@@ -333,13 +400,17 @@ void secretary()
             break;
         case 4: emergency();
             break;
-        case 5:
+        case 5: surgery();
             break;
         case 6:
             break;
-        case 7: status2 = false;
+        case 7: removePatient();
+            break;
+        case 8:
+            status2 = false;
             break;
         default:
+            cout << "Opcion incorrecta \n"; 
             break;
         }
     } while (status2);
