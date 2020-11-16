@@ -15,6 +15,7 @@ void admin();
 void searching();
 void searchDR();
 void emergency();
+void surgery();
 void ICU();
 void removePatient();
 void secretary();
