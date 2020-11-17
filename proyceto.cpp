@@ -21,7 +21,7 @@ void removePatient();
 void secretary();
 
 
-//main del "hospital de centro america"
+//main del "hospital de centroamerica"
 int main()
 {
     int option;
