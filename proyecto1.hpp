@@ -299,6 +299,72 @@ void removePatient()
         }
     }
 
+//funcion
+  if(PatientList.empty()) {
+        cout << "No hay productos en la lista" << endl;
+        return;
+    }else {
+        for (int pos = 0; pos < PatientList.size(); pos++) {
+            if(PatientList.at(pos).name == DischargedName && PatientList.at(pos).lastname == DischargedLastname)
+            {
+                encontrado = true;
+
+                PatientList.erase(PatientList.begin()+pos);
+
+                cout << "Se borro el producto correctamente" << endl;
+                break;
+            }
+        }
+
+        if(encontrado == false) {
+            cout << "No habia ningun producto con ese nombre" << endl;
+        }
+    }
+    
+// funcion
+ if(ICUList.empty()) {
+        cout << "No hay productos en la lista" << endl;
+        return;
+    }else {
+        for (int pos = 0; pos < ICUList.size(); pos++) {
+            if(ICUList.at(pos).name == DischargedName && ICUList.at(pos).lastname == DischargedLastname)
+            {
+                encontrado = true;
+
+                ICUList.erase(ICUList.begin()+pos);
+
+                cout << "Se borro el producto correctamente" << endl;
+                break;
+            }
+        }
+
+        if(encontrado == false) {
+            cout << "No habia ningun producto con ese nombre" << endl;
+        }
+    }
+
+//funcion
+ if(Surgeries.empty()) {
+        cout << "No hay productos en la lista" << endl;
+        return;
+    }else {
+        for (int pos = 0; pos < Surgeries.size(); pos++) {
+            if(Surgeries.at(pos).name == DischargedName && Surgeries.at(pos).lastname == DischargedLastname)
+            {
+                encontrado = true;
+
+                Surgeries.erase(Surgeries.begin()+pos);
+
+                cout << "Se borro el producto correctamente" << endl;
+                break;
+            }
+        }
+
+        if(encontrado == false) {
+            cout << "No habia ningun producto con ese nombre" << endl;
+        }
+    }
+
     getch();
     system("cls");
 }
