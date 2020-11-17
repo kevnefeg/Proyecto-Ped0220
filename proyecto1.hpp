@@ -9,12 +9,11 @@ using namespace std;
 #define Pass "hospital"
 
 //estrcutura de paciente 
-     struct Patient
+    struct Patient
     {
     string name, lastname;
     int dui;
     string family;
-    string symptoms;
     string doctor;
     int room;
     };
@@ -27,7 +26,6 @@ Patient patient;
          vector<Patient> Surgeries;
          vector<Patient> ICUList;
          vector<Patient> DischargedList;
-
 
 //funcion de contrasenia para el usuario de administrador 
 void password()
@@ -299,7 +297,9 @@ void emergency()
     system("cls");
 }
 
-void surgery(){
+//funcion mostrando los pacientes ubicados en sala de operaciones
+void surgery()
+{
     cout<<"\tPacientes en cirujia \n";
 
         if (Surgeries.empty())
@@ -337,13 +337,13 @@ void removePatient()
     cout << "Apellido: ";
     getline(cin, DischargedLastname);
 
-    bool encontrado = false;    
+    bool found = false;    
 
     for (int i = 0; i < PatientList.size(); i++)
     {
         if (PatientList.at(i).name == DischargedName && PatientList.at(i).lastname == DischargedLastname)
         {
-            encontrado = true;
+            found = true;
             cout << "Se ha eliminado al paciente correctamente \n";
             PatientList.at(i).name.erase();
             PatientList.at(i).lastname.erase();
@@ -354,17 +354,18 @@ void removePatient()
     {
         if (EmergencyRoomList.at(i).name == DischargedName && EmergencyRoomList.at(i).lastname == DischargedLastname)
         {
-            encontrado = true;
+            found = true;
             EmergencyRoomList.at(i).name.erase();
             EmergencyRoomList.at(i).lastname.erase();
+            PatientList.at(i).doctor.erase();
         }   
     }
 
-    if (encontrado == false)
+    if (found == false)
     {
         cout << "No hay ningun paciente con dichos datos \n";
     }
-    
+
     getch();
     system("cls");
 }
