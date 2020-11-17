@@ -338,28 +338,27 @@ void removePatient()
     cout << "Apellido: ";
     getline(cin, DischargedLastname);
 
-    bool found = false;    
+     bool encontrado = false;
 
-    for (int i = 0; i < PatientList.size(); i++)
-    {
-        if (PatientList.at(i).name == DischargedName && PatientList.at(i).lastname == DischargedLastname)
-        {
-            found = true;
-            cout << "Se ha eliminado al paciente correctamente \n";
-            PatientList.at(i).
-        }   
-    }
-    for (int i = 0; i < EmergencyRoomList.size(); i++)
-    {
-        if (EmergencyRoomList.at(i).name == DischargedName && EmergencyRoomList.at(i).lastname == DischargedLastname)
-        {
-            found = true;
-        }   
-    }
+    if(EmergencyRoomList.empty()) {
+        cout << "No hay productos en la lista" << endl;
+        return;
+    }else {
+        for (int pos = 0; pos < EmergencyRoomList.size(); pos++) {
+            if(EmergencyRoomList.at(pos).name == DischargedName && EmergencyRoomList.at(pos).lastname == DischargedLastname)
+            {
+                encontrado = true;
 
-    if (found == false)
-    {
-        cout << "No hay ningun paciente con dichos datos \n";
+                EmergencyRoomList.erase(EmergencyRoomList.begin()+pos);
+
+                cout << "Se borro el producto correctamente" << endl;
+                break;
+            }
+        }
+
+        if(encontrado == false) {
+            cout << "No habia ningun producto con ese nombre" << endl;
+        }
     }
 
     getch();
