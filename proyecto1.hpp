@@ -22,10 +22,11 @@ Patient patient;
 //listas globales
          vector<Patient> PatientList;
          vector<Patient> EmergencyRoomList;
-         vector<Patient> ConsultPatient;
+         queue<Patient>  ConsultPatient;
          vector<Patient> Surgeries;
          vector<Patient> ICUList;
          vector<Patient> DischargedList;
+
 
 //funcion de contrasenia para el usuario de administrador 
 void password()
@@ -124,7 +125,7 @@ void admitPatient(){
     {
     case 1:
         PatientData();
-        ConsultPatient.push_back(patient);
+        ConsultPatient.push(patient);
         break;
     case 2:
         PatientData();
@@ -345,9 +346,7 @@ void removePatient()
         {
             found = true;
             cout << "Se ha eliminado al paciente correctamente \n";
-            PatientList.at(i).name.erase();
-            PatientList.at(i).lastname.erase();
-            PatientList.at(i).doctor.erase();
+            PatientList.at(i).
         }   
     }
     for (int i = 0; i < EmergencyRoomList.size(); i++)
@@ -355,9 +354,6 @@ void removePatient()
         if (EmergencyRoomList.at(i).name == DischargedName && EmergencyRoomList.at(i).lastname == DischargedLastname)
         {
             found = true;
-            EmergencyRoomList.at(i).name.erase();
-            EmergencyRoomList.at(i).lastname.erase();
-            PatientList.at(i).doctor.erase();
         }   
     }
 
