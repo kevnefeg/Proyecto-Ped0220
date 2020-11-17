@@ -4,6 +4,7 @@
 #include <queue>
 #include <conio.h>
 #include "proyecto1.hpp"
+#include "admin.hpp"
 
 using namespace std;
 
