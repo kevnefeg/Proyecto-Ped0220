@@ -107,6 +107,7 @@ do
     
     cout<<"1.Ver todos los pacientes en el hospital \n";
     cout<<"2.Mostrar ganancias \n";
+    cout<<"3. Salir \n";
     cin>>option6;
 
     switch (option6)
@@ -116,7 +117,10 @@ do
 
     case 2:
         break;
-    default:
+    case 3: status3 = false;
+    break;
+
+    default:cout<<"Opcion Ingresada incorrecta \n";
         break;
     }
 
