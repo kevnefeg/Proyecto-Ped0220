@@ -19,6 +19,8 @@ void emergency();
 void surgery();
 void ICU();
 void removePatient();
+void ShowQueue();
+void cobrar();
 void secretary();
 
 
