@@ -81,13 +81,19 @@ void showtotalP()
         
     }
 //maquillaje
-      queue<Consult> clone = ConsultPatient;
+    queue<Consult> clone = ConsultPatient;
     cout<<"pacientes en consulta \n";
-    while (!clone.empty()) {
+    if (clone.empty())
+    {
+        cout << "No hay pacientes en consulta \n";
+    }
+    else
+    {
+        while (!clone.empty()) {
         cout <<"Paciente: "<< clone.front().name << " " << clone.front().lastname << "  ";
         clone.pop();
+        }
     }
-   
     getch();
     system("cls");
 }
