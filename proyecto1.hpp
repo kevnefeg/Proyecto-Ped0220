@@ -32,7 +32,6 @@ Consult consult;
          vector<Patient> EmergencyRoomList;
          queue<Consult>  ConsultPatient;
          vector<Patient> Surgeries;
-         vector<Patient> ICUList;
          vector<Patient> DischargedList;
 
 
@@ -170,7 +169,6 @@ void cobrar(){
     cout << "Se le ha cobrado a los clientes un total de $" << amount << endl;
 }
 
-
 //funcion buscando los pacientes que tiene cada doctor
 //se muestran las opciones de los doctores en turno 
 void searchDR()
@@ -298,11 +296,6 @@ void surgery()
     system("cls");
 }
 
-//funcion mostrando los pacientes en cuidados intensivos 
-void ICU()
-{
-    cout<<"Pacientes en cuidados intensivos \t"; 
-}
 
 //funcion para dar de alta (eliminar) un paciente 
 void removePatient()
@@ -360,28 +353,6 @@ void removePatient()
             cout << "No habia ningun producto con ese nombre" << endl;
         }
     }
-    
-// funcion
- if(ICUList.empty()) {
-        cout << "No hay productos en la lista" << endl;
-        return;
-    }else {
-        for (int pos = 0; pos < ICUList.size(); pos++) {
-            if(ICUList.at(pos).name == DischargedName && ICUList.at(pos).lastname == DischargedLastname)
-            {
-                encontrado = true;
-
-                ICUList.erase(ICUList.begin()+pos);
-
-                cout << "Se borro el producto correctamente" << endl;
-                break;
-            }
-        }
-
-        if(encontrado == false) {
-            cout << "No habia ningun producto con ese nombre" << endl;
-        }
-    }
 
 //funcion
  if(Surgeries.empty()) {
@@ -421,13 +392,12 @@ void secretary()
 		cout<<"\t \t \t 1. Ingresar paciente  \n";
 		cout<<"\t \t \t 2. Buscar paciente por su nombre \n";
 		cout<<"\t \t \t 3. Buscar pacientes de doctor especifico \n";
-        cout<<"\t \t \t 4. Mostrar cola de pacientes en consulta \n";
+        cout<<"\t \t \t 4. Mostrar de pacientes en consulta \n";
         cout<<"\t \t \t 5. Despachar paciente de consulta \n";
         cout<<"\t \t \t 6. Mostrar pacientes en sala de emergencia \n";
         cout<<"\t \t \t 7. Mostrar pacientes en cirujia \n";
-        cout<<"\t \t \t 8. Mostrar pacientes en cuidados intensivos \n";
-		cout<<"\t \t \t 9. Dar de alta paciente \n";
-		cout<<"\t \t \t 10. Salir \n";
+		cout<<"\t \t \t 8. Dar de alta paciente \n";
+		cout<<"\t \t \t 9. Salir \n";
         cout << "Opcion: ";
 		cin>>option2;
         system("cls");
@@ -448,12 +418,9 @@ void secretary()
             break;
         case 7: surgery();
             break;
-        case 8:
+        case 8: removePatient();
             break;
-        case 9: removePatient();
-            break;
-        case 10:
-            status2 = false;
+        case 9:  status2 = false;
             break;
         default:
             cout << "Opcion incorrecta \n"; 
