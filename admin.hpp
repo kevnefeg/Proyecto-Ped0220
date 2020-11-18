@@ -98,6 +98,29 @@ void showtotalP()
     system("cls");
 }
 
+void showProfits(){
+    float amount=0;
+    float amount2=0;
+    float totalamount=0;
+
+    for (int i = 0; i < PatientList.size(); i++)
+    {
+        amount += PatientList[i].payment;
+    }
+    while (!ConsultPatient.empty())
+    {
+        amount2 += ConsultPatient.front().pay;
+        ConsultPatient.pop();
+    }
+    
+    totalamount = amount + amount2;
+
+    cout << "Ganancias totales del hospital es de: $" << totalamount << "\n";
+
+    getch();
+    system("cls");
+}
+
 //funcion seguida de la entrada de la contrasenia para el usuario administrador 
 //entrando en funciones especiales que solo el admin tiene acceso 
 void admin()
@@ -122,7 +145,7 @@ do
     case 1:showtotalP();
         break;
 
-    case 2:
+    case 2: showProfits();
         break;
     case 3: status3 = false;
     break;

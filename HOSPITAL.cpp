@@ -13,6 +13,7 @@ void password();
 void PatientData();
 void admitPatient();
 void showtotalP();
+void showProfits();
 void admin();
 void searching();
 void searchDR();

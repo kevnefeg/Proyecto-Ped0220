@@ -16,14 +16,14 @@ using namespace std;
     string family;
     string doctor;
     int room;
-    float payment = 0;
+    float payment;
     };
 
     struct Consult
     {
         string name, lastname;
         int dui;
-        int pay = 50;
+        float pay = 50;
     };
 
 Patient patient;
@@ -57,9 +57,6 @@ void PatientData(){
     cout << "Ingrese la habitacion del paciente \n --";
     cin >> patient.room;
 
-
-    PatientList.push_back(patient);
-
     system("cls");
 }
 
@@ -91,18 +88,19 @@ void admitPatient(){
         cin >> consult.dui;
 
         ConsultPatient.push(consult);
-
         system("cls");
         break;
     case 2:
         PatientData();   
         patient.payment=180;
         EmergencyRoomList.push_back(patient);
+        PatientList.push_back(patient);
         break;
     case 3:
         PatientData();
-        patient.payment=350;
+        patient.payment=200;
         Surgeries.push_back(patient);
+        PatientList.push_back(patient);
         break;
     default: 
         cout << "Opcion incorrecta \n";
@@ -169,8 +167,9 @@ void cobrar(){
         amount += ConsultPatient.front().pay;
         ConsultPatient.pop();
     }
-        ConsultPatient.pop();
     cout << "Se le ha cobrado a los clientes un total de $" << amount << endl;
+
+    system("cls");
 }
 
 //funcion buscando los pacientes que tiene cada doctor
