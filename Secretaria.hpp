@@ -16,6 +16,7 @@ using namespace std;
     string family;
     string doctor;
     int room;
+    float payment = 0;
     };
 
     struct Consult
@@ -56,6 +57,7 @@ void PatientData(){
     cout << "Ingrese la habitacion del paciente \n --";
     cin >> patient.room;
 
+
     PatientList.push_back(patient);
 
     system("cls");
@@ -93,11 +95,13 @@ void admitPatient(){
         system("cls");
         break;
     case 2:
-        PatientData();
+        PatientData();   
+        patient.payment=180;
         EmergencyRoomList.push_back(patient);
         break;
     case 3:
         PatientData();
+        patient.payment=350;
         Surgeries.push_back(patient);
         break;
     default: 
@@ -265,7 +269,7 @@ void emergency()
         for (int i = 0; i < EmergencyRoomList.size(); i++)
         {
             cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion " << EmergencyRoomList[i].room;
-            cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor << "\n";
+            cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor <<" costo $"<<EmergencyRoomList[i].payment<< "\n";
         }
         
     }
@@ -287,7 +291,7 @@ void surgery()
             for (int i = 0; i < Surgeries.size(); i++)
             {
                 cout << "Paciente: " << Surgeries[i].name << " " << Surgeries[i].lastname << " se encuentra en la habitacion " << Surgeries[i].room;
-                cout << " , doctor encargado: Dr." << Surgeries[i].doctor << "\n";
+                cout << " , doctor encargado: Dr." << Surgeries[i].doctor <<" costo $"<<Surgeries[i].payment<< "\n";
             }
             
         } 

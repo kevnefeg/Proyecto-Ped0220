@@ -76,7 +76,7 @@ void showtotalP()
         for (int i = 0; i < PatientList.size(); i++)
         {
             cout << "Paciente: " << PatientList[i].name << " " << PatientList[i].lastname << " se encuentra en la habitacion " << PatientList[i].room;
-            cout << " , doctor encargado: Dr." << PatientList[i].doctor << "\n";
+            cout << " , doctor encargado: Dr." << PatientList[i].doctor <<"costo $"<<PatientList[i].payment<< "\n";
         }
         
     }
@@ -90,7 +90,7 @@ void showtotalP()
     else
     {
         while (!clone.empty()) {
-        cout <<"Paciente: "<< clone.front().name << " " << clone.front().lastname << "  ";
+        cout <<"Paciente: "<< clone.front().name << " " << clone.front().lastname << "  "<<" $"<<clone.front().pay;
         clone.pop();
         }
     }
@@ -115,6 +115,7 @@ do
     cout<<"2.Mostrar ganancias \n";
     cout<<"3. Salir \n";
     cin>>option6;
+       system("cls");
 
     switch (option6)
     {
