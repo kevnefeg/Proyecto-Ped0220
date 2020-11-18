@@ -18,11 +18,19 @@ using namespace std;
     int room;
     };
 
+    struct Consult
+    {
+        string name, lastname;
+        int dui;
+        int pay = 50;
+    };
+
 Patient patient;
+Consult consult;
 //listas globales
          vector<Patient> PatientList;
          vector<Patient> EmergencyRoomList;
-         queue<Patient>  ConsultPatient;
+         queue<Consult>  ConsultPatient;
          vector<Patient> Surgeries;
          vector<Patient> ICUList;
          vector<Patient> DischargedList;
@@ -73,8 +81,17 @@ void admitPatient(){
     switch (option3)
     {
     case 1:
-        PatientData();
-        ConsultPatient.push(patient);
+        cin.ignore();
+        cout << "Ingrese el nombre del paciente \n --";
+        getline(cin,consult.name);
+        cout << "Ingrese el apellido del paciente \n --";
+        getline(cin, consult.lastname);
+        cout << "Ingrese el DUI del paciente \n --";
+        cin >> consult.dui;
+
+        ConsultPatient.push(consult);
+
+        system("cls");
         break;
     case 2:
         PatientData();
@@ -131,6 +148,28 @@ void searching()
         }
     }
 }
+
+void ShowQueue() {
+    queue<Consult> clone = ConsultPatient;
+    while (!clone.empty()) {
+        cout << clone.front().name << " " << clone.front().lastname << "  ";
+        clone.pop();
+    }
+    getch();
+    system("cls");
+}
+
+void cobrar(){
+    int amount=0;
+    while (!ConsultPatient.empty())
+    {
+        amount += ConsultPatient.front().pay;
+        ConsultPatient.pop();
+    }
+        ConsultPatient.pop();
+    cout << "Se le ha cobrado a los clientes un total de $" << amount << endl;
+}
+
 
 //funcion buscando los pacientes que tiene cada doctor
 //se muestran las opciones de los doctores en turno 
@@ -288,6 +327,7 @@ void removePatient()
                 encontrado = true;
 
                 EmergencyRoomList.erase(EmergencyRoomList.begin()+pos);
+                PatientList.erase(PatientList.begin()+pos);
 
                 cout << "Se borro el producto correctamente" << endl;
                 break;
@@ -381,11 +421,13 @@ void secretary()
 		cout<<"\t \t \t 1. Ingresar paciente  \n";
 		cout<<"\t \t \t 2. Buscar paciente por su nombre \n";
 		cout<<"\t \t \t 3. Buscar pacientes de doctor especifico \n";
-        cout<<"\t \t \t 4. Mostrar pacientes en sala de emergencia \n";
-        cout<<"\t \t \t 5. Mostrar pacientes en cirujia \n";
-        cout<<"\t \t \t 6. Mostrar pacientes en cuidados intensivos \n";
-		cout<<"\t \t \t 7. Dar de alta paciente \n";
-		cout<<"\t \t \t 8. Salir \n";
+        cout<<"\t \t \t 4. Mostrar cola de pacientes en consulta \n";
+        cout<<"\t \t \t 5. Despachar paciente de consulta \n";
+        cout<<"\t \t \t 6. Mostrar pacientes en sala de emergencia \n";
+        cout<<"\t \t \t 7. Mostrar pacientes en cirujia \n";
+        cout<<"\t \t \t 8. Mostrar pacientes en cuidados intensivos \n";
+		cout<<"\t \t \t 9. Dar de alta paciente \n";
+		cout<<"\t \t \t 10. Salir \n";
         cout << "Opcion: ";
 		cin>>option2;
         system("cls");
@@ -398,15 +440,19 @@ void secretary()
             break;
         case 3: searchDR();
             break;
-        case 4: emergency();
+        case 4: ShowQueue();
             break;
-        case 5: surgery();
+        case 5: cobrar();
             break;
-        case 6:
+        case 6: emergency();
             break;
-        case 7: removePatient();
+        case 7: surgery();
             break;
         case 8:
+            break;
+        case 9: removePatient();
+            break;
+        case 10:
             status2 = false;
             break;
         default:
