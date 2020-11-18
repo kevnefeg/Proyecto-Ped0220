@@ -3,8 +3,8 @@
 #include <string>
 #include <queue>
 #include <conio.h>
-#include "proyecto1.hpp"
-#include "admin.hpp"
+#include "Secretaria.hpp"
+#include "Admin.hpp"
 
 using namespace std;
 
