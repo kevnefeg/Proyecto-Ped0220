@@ -100,7 +100,7 @@ void admin()
     system("cls");
     bool status3 = true;
     int option6;
-    cout << "\tAccedio correctamente al sistema \n";
+    cout << "\tAccedi\242 correctamente al sistema \n";
     cout << "\tQue desea hacer? \n";
 do
 {
