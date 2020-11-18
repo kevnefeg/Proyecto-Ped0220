@@ -169,6 +169,7 @@ void cobrar(){
     }
     cout << "Se le ha cobrado a los clientes un total de $" << amount << endl;
 
+    getch();
     system("cls");
 }
 
