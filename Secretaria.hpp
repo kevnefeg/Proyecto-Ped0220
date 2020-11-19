@@ -71,7 +71,7 @@ void admitPatient(){
     cout << "Ingrese el area donde sera trasladado el paciente \n";
     cout << "1. Consulta \n";
     cout << "2. Sala de Emergencias \n";
-    cout << "3. Cirujias \n";
+    cout << "3. Cirugia \n";
     cout << "Opcion :";
     cin >> option3;
         system("cls");
@@ -294,11 +294,11 @@ void emergency()
 //funcion mostrando los pacientes ubicados en sala de operaciones
 void surgery()
 {
-    cout<<"\tPACIENTES EN CIRUJIA \n";
+    cout<<"\tPACIENTES EN CIRUGIA \n";
 
         if (Surgeries.empty())
         {
-            cout << "No hay pacientes en cirujia en estos momentos \n";
+            cout << "No hay pacientes en cirugia en estos momentos \n";
         }
         else
         {
@@ -404,7 +404,7 @@ void secretary()
         cout<<"\t \t \t 4. Mostrar pacientes en consulta \n";
         cout<<"\t \t \t 5. Despachar paciente de consulta \n";
         cout<<"\t \t \t 6. Mostrar pacientes en sala de emergencia \n";
-        cout<<"\t \t \t 7. Mostrar pacientes en cirujia \n";
+        cout<<"\t \t \t 7. Mostrar pacientes en cirugia \n";
 		cout<<"\t \t \t 8. Dar de alta paciente \n";
 		cout<<"\t \t \t 9. Salir \n";
         cout << "Opcion: ";
