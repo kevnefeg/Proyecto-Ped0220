@@ -3,13 +3,14 @@
 #include <string>
 #include <queue>
 #include <conio.h>
+#include <locale.h>
 
 using namespace std;
 
 #define Pass "hospital"
 
 //listas globales
-       //  vector<Patient> PatientList;
+    //  vector<Patient> PatientList;
 
 void password()
 {
@@ -19,7 +20,7 @@ void password()
     while (ingress)
     {
         cin.ignore();
-        cout << "Ingrese la contrasenia: ";
+        cout << "\tIngrese la contrasenia: " <<"\t" <<"\n";
         
         char caracter;
         caracter = getch();
@@ -64,33 +65,35 @@ void password()
 
 void showtotalP()
 {
-     cout<<"\tPacientes en todo el hospital\n";
+     cout<<"\tPACIENTES EN TODO EL HOSPITAL\n";
      cout<<"\n ACTIVOS \n";
 
     if (PatientList.empty())
     {
-        cout << "No hay pacientes en sala de emergencia \n";
+        cout << "*No hay pacientes en sala de emergencia* \n";
     }
     else
     {
         for (int i = 0; i < PatientList.size(); i++)
         {
-            cout << "Paciente: " << PatientList[i].name << " " << PatientList[i].lastname << " se encuentra en la habitacion " << PatientList[i].room;
-            cout << " , doctor encargado: Dr." << PatientList[i].doctor <<"costo $"<<PatientList[i].payment<< "\n";
+            cout << "----------------------------------------------------------------\n";
+            cout << "Paciente: " << PatientList[i].name << " " << PatientList[i].lastname << " se encuentra en la habitacion |" << PatientList[i].room;
+            cout << "|, Doctor encargado: Dr." << PatientList[i].doctor <<", Costo $"<<PatientList[i].payment<< "\n";
         }
         
     }
-//maquillaje
+
     queue<Consult> clone = ConsultPatient;
-    cout<<"pacientes en consulta \n";
+    cout<<"\n PACIENTES EN CONSULTA \n";
     if (clone.empty())
     {
-        cout << "No hay pacientes en consulta \n";
+        cout << "*No hay pacientes en consulta* \n";
     }
     else
     {
         while (!clone.empty()) {
-        cout <<"Paciente: "<< clone.front().name << " " << clone.front().lastname << "  "<<" $"<<clone.front().pay;
+        cout <<"\n----------------------------------------------------------------\n";
+        cout <<"Paciente: "<< clone.front().name << " " << clone.front().lastname << " -> "<<" $"<<clone.front().pay;
         clone.pop();
         }
     }
@@ -115,7 +118,7 @@ void showProfits(){
     
     totalamount = amount + amount2;
 
-    cout << "Ganancias totales del hospital es de: $" << totalamount << "\n";
+    cout << "EL TOTAL DE GANACIAS DEL HOSPITAL ES DE: $" << totalamount << "\n";
 
     getch();
     system("cls");
@@ -129,14 +132,13 @@ void admin()
     system("cls");
     bool status3 = true;
     int option6;
-    cout << "\tAccedi\242 correctamente al sistema \n";
-    cout << "\tQue desea hacer? \n";
 do
 {
-    
-    cout<<"1.Ver todos los pacientes en el hospital \n";
-    cout<<"2.Mostrar ganancias \n";
-    cout<<"3. Salir \n";
+    cout<<"*-*-*-*- \t Bienvenido administrador(a) \t -*-*-*-*\n \n";
+    cout<<"\t \t  1. Ver todos los pacientes en el hospital \n";
+    cout<<"\t \t  2. Mostrar ganancias \n";
+    cout<<"\t \t  3. Salir \n";
+    cout<<"Opcion: ";
     cin>>option6;
        system("cls");
 
@@ -150,7 +152,7 @@ do
     case 3: status3 = false;
     break;
 
-    default:cout<<"Opcion Ingresada incorrecta \n";
+    default:cout<<"La opcion ingresada es incorrecta \n";
         break;
     }
 

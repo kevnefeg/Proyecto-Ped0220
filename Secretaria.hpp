@@ -3,6 +3,7 @@
 #include <string>
 #include <queue>
 #include <conio.h>
+#include <locale.h>
 
 using namespace std;
 
@@ -29,11 +30,11 @@ using namespace std;
 Patient patient;
 Consult consult;
 //listas globales
-         vector<Patient> PatientList;
-         vector<Patient> EmergencyRoomList;
-         queue<Consult>  ConsultPatient;
-         vector<Patient> Surgeries;
-         vector<Patient> DischargedList;
+        vector<Patient> PatientList;
+        vector<Patient> EmergencyRoomList;
+        queue<Consult>  ConsultPatient;
+        vector<Patient> Surgeries;
+        vector<Patient> DischargedList;
 
 
 //funcion ingresando los datos del paciente 
@@ -152,15 +153,17 @@ void searching()
 
 void ShowQueue() {
     queue<Consult> clone = ConsultPatient;
+    cout << "Pacientes en consulta: \n";
     while (!clone.empty()) {
-        cout << clone.front().name << " " << clone.front().lastname << "  ";
+        cout << "\n---------------------------\n";
+        cout << clone.front().name << " " << clone.front().lastname;
         clone.pop();
     }
     getch();
     system("cls");
 }
 
-void cobrar(){
+void charge(){
     int amount=0;
     while (!ConsultPatient.empty())
     {
@@ -180,7 +183,7 @@ void searchDR()
     bool search2 = false;
     int option4;
     cout<<"Doctores en turno \n";
-    cout<<"1. Dr.Juarez \n"<<"2. Dr. Cerna \n";
+    cout<<"1. Dr. Juarez \n"<<"2. Dr. Cerna \n";
     cout << "Opcion: ";
     cin>>option4;
 
@@ -202,10 +205,11 @@ void searchDR()
                     if (PatientList.at(i).doctor == "Juarez")
                     {
                         search2 = true;
-                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                        cout << "----------------------------------------------------------------\n";
+                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion |" << PatientList.at(i).room << "|\n";
                     }
                 }
-                cout << "Presiones enter para continuar...";
+                cout << "Presione enter para continuar...";
                 getch();
                 system("cls");
                 if (search2 == false)
@@ -233,7 +237,8 @@ void searchDR()
                     if (PatientList.at(i).doctor == "Cerna")
                     {
                         search2 = true;
-                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                        cout << "----------------------------------------------------------------\n";
+                        cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << ", se encuentra en la habitacion |" << PatientList.at(i).room << "|\n";
                     }
                 }
                 cout << "Presiones enter para continuar...";
@@ -258,7 +263,7 @@ void searchDR()
 //funcion mostrando los pacientes ubicados en la sala de emergencia 
 void emergency()
 {
-    cout<<"\tPacientes en la sala de emergencia \n";
+    cout<<"\tPACIENTES EN SALA DE EMERGENCIAS \n";
 
     if (EmergencyRoomList.empty())
     {
@@ -268,8 +273,9 @@ void emergency()
     {
         for (int i = 0; i < EmergencyRoomList.size(); i++)
         {
-            cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion " << EmergencyRoomList[i].room;
-            cout << " , doctor encargado: Dr." << EmergencyRoomList[i].doctor <<" costo $"<<EmergencyRoomList[i].payment<< "\n";
+            cout << "----------------------------------------------------------------\n";
+            cout << "Paciente: " << EmergencyRoomList[i].name << " " << EmergencyRoomList[i].lastname << " se encuentra en la habitacion |" << EmergencyRoomList[i].room;
+            cout << "|, Doctor encargado: Dr." << EmergencyRoomList[i].doctor <<", Costo $"<<EmergencyRoomList[i].payment<< "\n";
         }
         
     }
@@ -280,7 +286,7 @@ void emergency()
 //funcion mostrando los pacientes ubicados en sala de operaciones
 void surgery()
 {
-    cout<<"\tPacientes en cirujia \n";
+    cout<<"\tPACIENTES EN CIRUJIA \n";
 
         if (Surgeries.empty())
         {
@@ -290,8 +296,9 @@ void surgery()
         {
             for (int i = 0; i < Surgeries.size(); i++)
             {
-                cout << "Paciente: " << Surgeries[i].name << " " << Surgeries[i].lastname << " se encuentra en la habitacion " << Surgeries[i].room;
-                cout << " , doctor encargado: Dr." << Surgeries[i].doctor <<" costo $"<<Surgeries[i].payment<< "\n";
+                cout << "----------------------------------------------------------------\n";
+                cout << "Paciente: " << Surgeries[i].name << " " << Surgeries[i].lastname << " se encuentra en la habitacion |" << Surgeries[i].room;
+                cout << "|, Doctor encargado: Dr." << Surgeries[i].doctor <<", Costo $"<<Surgeries[i].payment<< "\n";
             }
             
         } 
@@ -306,7 +313,7 @@ void removePatient()
 {
     cin.ignore();
     string DischargedName, DischargedLastname;
-    cout<<"\tA que paciente desea dar de alta \n";
+    cout<<"\tDatos del paciente que dara de alta \n";
     cout << "Nombre: ";
     getline(cin, DischargedName);
     cout << "Apellido: ";
@@ -326,19 +333,19 @@ void removePatient()
                 EmergencyRoomList.erase(EmergencyRoomList.begin()+pos);
                 PatientList.erase(PatientList.begin()+pos);
 
-                cout << "Se borro el producto correctamente" << endl;
+                cout << "Se borro el paciente correctamente" << endl;
                 break;
             }
         }
 
         if(encontrado == false) {
-            cout << "No habia ningun producto con ese nombre" << endl;
+            cout << "No existe ningun paciente con esos datos" << endl;
         }
     }
 
 //funcion
   if(PatientList.empty()) {
-        cout << "No hay productos en la lista" << endl;
+        cout << "No hay pacientes en la lista" << endl;
         return;
     }else {
         for (int pos = 0; pos < PatientList.size(); pos++) {
@@ -348,19 +355,19 @@ void removePatient()
 
                 PatientList.erase(PatientList.begin()+pos);
 
-                cout << "Se borro el producto correctamente" << endl;
+                cout << "Se borro el pacientes correctamente" << endl;
                 break;
             }
         }
 
         if(encontrado == false) {
-            cout << "No habia ningun producto con ese nombre" << endl;
+            cout << "No existe ningun paciente con esos datos" << endl;
         }
     }
 
 //funcion
  if(Surgeries.empty()) {
-        cout << "No hay productos en la lista" << endl;
+        cout << "No hay pacientes en la lista" << endl;
         return;
     }else {
         for (int pos = 0; pos < Surgeries.size(); pos++) {
@@ -370,13 +377,13 @@ void removePatient()
 
                 Surgeries.erase(Surgeries.begin()+pos);
 
-                cout << "Se borro el producto correctamente" << endl;
+                cout << "Se borro el paciente correctamente" << endl;
                 break;
             }
         }
 
         if(encontrado == false) {
-            cout << "No habia ningun producto con ese nombre" << endl;
+            cout << "No existe ningun paciente con esos datos" << endl;
         }
     }
 
@@ -396,7 +403,7 @@ void secretary()
 		cout<<"\t \t \t 1. Ingresar paciente  \n";
 		cout<<"\t \t \t 2. Buscar paciente por su nombre \n";
 		cout<<"\t \t \t 3. Buscar pacientes de doctor especifico \n";
-        cout<<"\t \t \t 4. Mostrar de pacientes en consulta \n";
+        cout<<"\t \t \t 4. Mostrar pacientes en consulta \n";
         cout<<"\t \t \t 5. Despachar paciente de consulta \n";
         cout<<"\t \t \t 6. Mostrar pacientes en sala de emergencia \n";
         cout<<"\t \t \t 7. Mostrar pacientes en cirujia \n";
@@ -416,7 +423,7 @@ void secretary()
             break;
         case 4: ShowQueue();
             break;
-        case 5: cobrar();
+        case 5: charge();
             break;
         case 6: emergency();
             break;

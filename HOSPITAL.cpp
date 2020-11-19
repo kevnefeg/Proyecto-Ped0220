@@ -3,6 +3,7 @@
 #include <string>
 #include <queue>
 #include <conio.h>
+#include <locale.h>
 #include "Secretaria.hpp"
 #include "Admin.hpp"
 
@@ -21,13 +22,14 @@ void emergency();
 void surgery();
 void removePatient();
 void ShowQueue();
-void cobrar();
+void charge();
 void secretary();
 
 
 //main del "hospital de centroamerica"
 int main()
 {
+    setlocale(LC_CTYPE, "Spanish");
     int option;
     bool status=true;
 
@@ -38,7 +40,7 @@ int main()
         cout<<"-*-*-*-* \t BIENVENIDOS AL HOSPITAL DE CENTROAMERICA \t -*-*-*-*\n";
         cout<<"USUARIOS DISPONIBLES \n";
         cout<<"1. Administrador(a) \n";
-        cout<<"2. Secretaria \n";
+        cout<<"2. Enfermero(a) \n";
         cout<<"3. Cerrar \n";
         cout << "Opcion: ";
         cin>>option;
