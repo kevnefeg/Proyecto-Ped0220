@@ -53,8 +53,11 @@ int main()
         case 2: secretary();
             break;
         case 3: status=false;
+            cout << "Cerrando programa \n";
             break;
-        default: cout<<"Opcion incorrecta";
+        default: cout<<"Opcion incorrecta \n";
+            getch();
+            system("cls");
             break;
         }
     } while (status);

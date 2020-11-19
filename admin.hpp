@@ -70,7 +70,7 @@ void showtotalP()
 
     if (PatientList.empty())
     {
-        cout << "*No hay pacientes en sala de emergencia* \n";
+        cout << "*No hay pacientes*  \n";
     }
     else
     {
@@ -153,6 +153,8 @@ do
     break;
 
     default:cout<<"La opcion ingresada es incorrecta \n";
+        getch();
+        system("cls");
         break;
     }
 

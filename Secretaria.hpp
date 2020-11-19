@@ -135,7 +135,7 @@ void searching()
             if (PatientList.at(i).name == name)
             {
                 search = true;
-                cout << "El paciente " << PatientList.at(i).name << " " << PatientList.at(i).lastname << " se encuentra en la habitacion " << PatientList.at(i).room << "\n";
+                cout << "Paciente: " << PatientList.at(i).name << " " << PatientList.at(i).lastname << " se encuentra en la habitacion " << PatientList.at(i).room << "\n";
                 cout << "Presione enter para continuar...";
                 getch();
                 system("cls");
@@ -153,11 +153,19 @@ void searching()
 
 void ShowQueue() {
     queue<Consult> clone = ConsultPatient;
-    cout << "Pacientes en consulta: \n";
-    while (!clone.empty()) {
+    if (clone.empty())
+    {
+        cout<<"\tPACIENTES EN CONSULTA \n";
+        cout << "No hay ningun paciente en consulta \n";
+    }
+    else
+    {
+        cout<<"\tPACIENTES EN CONSULTA \n";
+        while (!clone.empty()) {
         cout << "\n---------------------------\n";
         cout << clone.front().name << " " << clone.front().lastname;
         clone.pop();
+    }
     }
     getch();
     system("cls");
@@ -192,7 +200,7 @@ void searchDR()
         case 1: 
             if (PatientList.empty())
             {
-                cout << "No hay pacientes en el hospital \n";
+                cout << "No tiene ningun paciente en estos momentos... \n";
                 cout << "Presione enter para continuar...";
                 getch();
                 system("cls");
@@ -224,7 +232,7 @@ void searchDR()
         case 2:
             if (PatientList.empty())
             {
-                cout << "No hay pacientes en el hospital \n";
+                cout << "No tiene ningun paciente en estos momentos \n";
                 cout << "Presione enter para continuar...";
                 getch();
                 system("cls");
@@ -322,8 +330,6 @@ void removePatient()
      bool encontrado = false;
 
     if(EmergencyRoomList.empty()) {
-        cout << "No hay productos en la lista" << endl;
-        return;
     }else {
         for (int pos = 0; pos < EmergencyRoomList.size(); pos++) {
             if(EmergencyRoomList.at(pos).name == DischargedName && EmergencyRoomList.at(pos).lastname == DischargedLastname)
@@ -332,8 +338,6 @@ void removePatient()
 
                 EmergencyRoomList.erase(EmergencyRoomList.begin()+pos);
                 PatientList.erase(PatientList.begin()+pos);
-
-                cout << "Se borro el paciente correctamente" << endl;
                 break;
             }
         }
@@ -346,7 +350,6 @@ void removePatient()
 //funcion
   if(PatientList.empty()) {
         cout << "No hay pacientes en la lista" << endl;
-        return;
     }else {
         for (int pos = 0; pos < PatientList.size(); pos++) {
             if(PatientList.at(pos).name == DischargedName && PatientList.at(pos).lastname == DischargedLastname)
@@ -354,8 +357,6 @@ void removePatient()
                 encontrado = true;
 
                 PatientList.erase(PatientList.begin()+pos);
-
-                cout << "Se borro el pacientes correctamente" << endl;
                 break;
             }
         }
@@ -367,8 +368,6 @@ void removePatient()
 
 //funcion
  if(Surgeries.empty()) {
-        cout << "No hay pacientes en la lista" << endl;
-        return;
     }else {
         for (int pos = 0; pos < Surgeries.size(); pos++) {
             if(Surgeries.at(pos).name == DischargedName && Surgeries.at(pos).lastname == DischargedLastname)
@@ -376,8 +375,6 @@ void removePatient()
                 encontrado = true;
 
                 Surgeries.erase(Surgeries.begin()+pos);
-
-                cout << "Se borro el paciente correctamente" << endl;
                 break;
             }
         }
@@ -387,6 +384,7 @@ void removePatient()
         }
     }
 
+    cout << "Se borro el paciente correctamente" << endl;
     getch();
     system("cls");
 }
